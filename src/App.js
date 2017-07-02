@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import * as BooksAPI from './BooksAPI'
 import {Route} from 'react-router-dom'
 
@@ -7,7 +7,7 @@ import SearchBar from './components/SearchBar'
 
 import './App.css'
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
     /**
      * TODO: Instead of using this state variable to keep track of which page
