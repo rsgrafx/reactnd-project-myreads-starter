@@ -7,11 +7,12 @@ export default class Shelf extends Component {
   
   static PropTypes = {
     shelfTitle: PropTypes.string.isRequired,
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    handleShelfChange: PropTypes.func.isRequired
   }
 
   render() {
-    const {books, shelfTitle} = this.props
+    const {books, shelfTitle, handleShelfChange} = this.props
     return(
       <div className="bookshelf">
         <h2 className="bookshelf-title">{shelfTitle}</h2>
@@ -20,7 +21,9 @@ export default class Shelf extends Component {
             {books.map(
               book => (
                 <li key={book.title}>
-                  <Book book={book} imageLink={book.imageLinks.smallThumbnail}/>
+                  <Book book={book}
+                    imageLink={book.imageLinks.smallThumbnail}
+                    handleShelfChange={handleShelfChange}/>
                 </li>
             ))}
           </ol>

@@ -55,7 +55,10 @@ export default class SearchBar extends Component {
           <ol className="books-grid">
               {(this.state.books.length !== 0) && this.state.books.map((book, idx) => (
                 <li key={`${book.id}-${idx}`}>
-                  <Book book={book} imageLink={book.imageLinks.smallThumbnail} />
+                  <Book
+                    book={book}
+                    imageLink={book.imageLinks.smallThumbnail}
+                    handleShelfChange={this.props.handleShelfChange} />
                 </li>))}
           </ol>
         </div>
