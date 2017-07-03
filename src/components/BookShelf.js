@@ -14,16 +14,25 @@ export default class BookShelf extends Component {
     
     return(
       <div className="list-books">
-      <div className="list-books-title">
-        <h1>Orion's Reads</h1>
-      </div>
-      <div className="list-books-content">
-        <div>
-          <Shelf shelfTitle="Currently Reading" books={currentlyReading} handleShelfChange={handleShelfChange}/>
-          <Shelf shelfTitle="Want to Read" books={wantToRead} handleShelfChange={handleShelfChange}/>
-          <Shelf shelfTitle="Read" books={read} handleShelfChange={handleShelfChange}/>
+        <div className="list-books-title">
+          <h1>Orion's Reads</h1>
         </div>
-      </div>
+        <div className="list-books-content">
+          <div>
+            <Shelf
+              shelfTitle="Currently Reading"
+              books={currentlyReading}
+              handleShelfChange={handleShelfChange}/>
+            <Shelf
+              shelfTitle="Want to Read"
+              books={wantToRead}
+              handleShelfChange={handleShelfChange}/>
+            <Shelf
+              shelfTitle="Read"
+              books={read}
+              handleShelfChange={handleShelfChange}/>
+          </div>
+        </div>
       <div className="open-search">
         <Link to="/search">Add a book</Link>
       </div>
