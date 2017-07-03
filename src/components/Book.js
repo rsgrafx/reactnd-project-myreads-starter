@@ -4,18 +4,18 @@ import PropTypes from 'prop-types'
 class BookControl extends Component {
   
   state = {
-    bookId: this.props.bookId
+    book: this.props.book
   }
   
   changeShelf = (event) => {
-    this.props.handleShelfChange(this.state.bookId, event.target.value)
+    this.props.handleShelfChange(this.state.book, event.target.value)
   }
 
   render() {
     const {shelf} = this.props
     return(
       <div className="book-shelf-changer">
-        <select value={this.state.value} onChange={this.changeShelf} defaultValue={shelf}>
+        <select value={this.state.value} onChange={this.changeShelf} defaultValue={shelf || "none"}>
           <option value="none" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
@@ -48,7 +48,7 @@ export default class Book extends Component {
           <BookCover book={book} image={imageLink} />
           <BookControl
             handleShelfChange={handleShelfChange}
-            bookId={book.id}
+            book={book}
             shelf={book.shelf}
           />
         </div>
