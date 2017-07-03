@@ -6,7 +6,7 @@ import Shelf from './Shelf'
 export default class BookShelf extends Component {
   
   render() {
-    const {books} = this.props
+    const {books, handleShelfChange} = this.props
     
     let read = books.filter((book) => (book.shelf === "read"))
     let currentlyReading = books.filter((book) => (book.shelf === "currentlyReading"))
@@ -19,9 +19,9 @@ export default class BookShelf extends Component {
       </div>
       <div className="list-books-content">
         <div>
-          <Shelf shelfTitle="Currently Reading" books={currentlyReading}/>
-          <Shelf shelfTitle="Want to Read" books={wantToRead}/>
-          <Shelf shelfTitle="Read" books={read} />
+          <Shelf shelfTitle="Currently Reading" books={currentlyReading} handleShelfChange={handleShelfChange}/>
+          <Shelf shelfTitle="Want to Read" books={wantToRead} handleShelfChange={handleShelfChange}/>
+          <Shelf shelfTitle="Read" books={read} handleShelfChange={handleShelfChange}/>
         </div>
       </div>
       <div className="open-search">
