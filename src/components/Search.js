@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import * as BooksAPI from '../BooksAPI'
-import Book from './Book'
 import SearchBar from './SearchBar'
+import SearchResults from './SearchResults'
 
 export default class Search extends Component {
   
@@ -32,24 +32,18 @@ export default class Search extends Component {
   
   render() {
     const {handleShelfChange} = this.props
+
     return(
       <div className="search-books">
         <SearchBar
           handleShelfChange={handleShelfChange}
           searchBooks={this.searchBooks}
         />
-        <div className="search-books-results">
-          <h3> {this.state.message} </h3>
-          <ol className="books-grid">
-              {(this.state.books.length !== 0) && this.state.books.map((book, idx) => (
-                <li key={`${book.id}-${idx}`}>
-                  <Book
-                    book={book}
-                    imageLink={book.imageLinks.smallThumbnail}
-                    handleShelfChange={handleShelfChange} />
-                </li>))}
-          </ol>
-        </div>
+        <SearchResults
+          results={this.state.books}
+          message={this.state.message}
+          handleShelfChange={handleShelfChange}
+        />
       </div>
     )
   }
