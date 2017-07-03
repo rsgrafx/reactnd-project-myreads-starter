@@ -13,15 +13,22 @@ class BooksApp extends Component {
   }
   
   handleShelfChange = (bookId, shelf) => {
-    let target_book = this.state.allBooks.filter((book) => (book.id === bookId))
-    BooksAPI.update(target_book, shelf)
-      .then((res) => console.log(res))
-      
-    BooksAPI.getAll()
-      .then((books) => {
-        console.log(books.filter((book) => (book.id === bookId)), "TARGET BOOK")
-        this.setState({allBooks: books})
-      })
+    let result = this.state.allBooks.filter((book) => (book.id === bookId))
+    let target_book = result.pop()
+    target_book.shelf = shelf
+    this._updateBookApi(target_book, shelf)
+    this._updateBooks(target_book)
+  }
+  
+  _updateBooks = (target_book) => {
+    let remaining_books = this.state.allBooks.filter((book) => (book.id !== target_book.id))
+    let books = remaining_books.concat(target_book)
+    this.setState({allBooks: books})
+  }
+  
+  _updateBookApi = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+      .then(res => console.log(res))
   }
 
   componentWillMount() {

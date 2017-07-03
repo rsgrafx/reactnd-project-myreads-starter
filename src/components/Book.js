@@ -8,14 +8,14 @@ class BookControl extends Component {
   }
   
   changeShelf = (event) => {
-    console.log("Fired")
     this.props.handleShelfChange(this.state.bookId, event.target.value)
   }
 
   render() {
+    const {shelf} = this.props
     return(
       <div className="book-shelf-changer">
-        <select value={this.state.value} onChange={this.changeShelf}>
+        <select value={this.state.value} onChange={this.changeShelf} defaultValue={shelf}>
           <option value="none" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
@@ -46,7 +46,11 @@ export default class Book extends Component {
       <div className="book">
         <div className="book-top">
           <BookCover book={book} image={imageLink} />
-          <BookControl handleShelfChange={handleShelfChange} bookId={book.id}/>
+          <BookControl
+            handleShelfChange={handleShelfChange}
+            bookId={book.id}
+            shelf={book.shelf}
+          />
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{!!(book.authors) && book.authors.join(", ")}</div>
