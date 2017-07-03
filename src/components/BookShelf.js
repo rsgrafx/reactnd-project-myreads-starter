@@ -4,8 +4,13 @@ import {Link} from 'react-router-dom'
 import Shelf from './Shelf'
 
 export default class BookShelf extends Component {
+  
   render() {
-    const {currently, wantToRead, read} = this.props.books
+    const {books} = this.props
+    
+    let read = books.filter((book) => (book.shelf === "read"))
+    let currentlyReading = books.filter((book) => (book.shelf === "currentlyReading"))
+    let wantToRead = books.filter((book) => (book.shelf === "wantToRead"))
     
     return(
       <div className="list-books">
@@ -14,15 +19,13 @@ export default class BookShelf extends Component {
       </div>
       <div className="list-books-content">
         <div>
-          
-          <Shelf shelfTitle="Currently Reading" books={currently}/>
+          <Shelf shelfTitle="Currently Reading" books={currentlyReading}/>
           <Shelf shelfTitle="Want to Read" books={wantToRead}/>
           <Shelf shelfTitle="Read" books={read} />
-          
         </div>
       </div>
       <div className="open-search">
-        <Link to="/search" >Add a book</Link>
+        <Link to="/search">Add a book</Link>
       </div>
     </div>)
   }
