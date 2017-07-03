@@ -3,7 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import {Route} from 'react-router-dom'
 
 import BookShelf from './components/BookShelf'
-import SearchBar from './components/SearchBar'
+import Search from './components/Search'
 
 import './App.css'
 
@@ -41,7 +41,10 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-        <Route exact path="/search" render={ () => <SearchBar handleShelfChange={this.handleShelfChange} /> } />
+        <Route exact path="/search" render={ () => <Search 
+          handleShelfChange={this.handleShelfChange} />
+        }
+        />
         <Route exact path="/" render={() => <BookShelf
             handleShelfChange={this.handleShelfChange}
             books={this.state.allBooks}
