@@ -14,10 +14,10 @@ const BookControl = (props) => {
     </div>)
 }
 
-const BookCover = ({book}) => {
+const BookCover = ({book, image}) => {
   return(<div
       className="book-cover"
-      style={{ width: book.image.width, height: book.image.height, backgroundImage: `url(${book.image.url})` }}>
+        style={{ width: 128, height: 193, backgroundImage: `url(${image})` }}>
       </div>)
 }
 
@@ -27,17 +27,16 @@ export default class Book extends Component {
   }
   
   render() {
-    let { book } = this.props
+    let { book, imageLink } = this.props
     return(
       <div className="book">
         <div className="book-top">
-          <BookCover book={book} />
+          <BookCover book={book} image={imageLink} />
           <BookControl />
         </div>
         <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.author}/div>
+        <div className="book-authors">{!!(book.authors) && book.authors.join(", ")}</div>
       </div>
-    </div>
     )
   }
 }

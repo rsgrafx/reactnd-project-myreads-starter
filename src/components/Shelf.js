@@ -20,7 +20,7 @@ export default class Shelf extends Component {
             {books.map(
               book => (
                 <li key={book.title}>
-                  <Book book={book} />
+                  <Book book={book} imageLink={book.previewLink}/>
                 </li>
             ))}
           </ol>
