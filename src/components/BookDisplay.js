@@ -6,15 +6,18 @@ import BookControl from './BookControl'
 
 export default class BookDisplay extends Component {
   
-  state = {
-    book: {},
+  constructor(props) {
+    super(props)
+    this.state = {
+      book: {},
+      url: ''
+    }
   }
   
-  componentDidMount() {
+  componentWillMount() {
     const {match} = this.props.router
-    
     BooksAPI.get(match.params.id)
-      .then(book => this.setState({book: book}))
+      .then(book => this.setState({book: book, url: book.imageLinks.thumbnail}))
   }
   
   render() {
@@ -32,6 +35,7 @@ export default class BookDisplay extends Component {
           <h3>Book Title: {book.title} </h3>
           <div id="book-display">Current shelf: {book.shelf}
             <div>
+              <img src={this.state.url} alt={book.title}/>
               <BookControl
                 onDisplay={true}
                 handleShelfChange={addToShelf}
@@ -39,9 +43,7 @@ export default class BookDisplay extends Component {
                 shelf={book.shelf} />
             </div>
           </div>
-          
           <hr />
-          
           <p>{!!(book.description) && book.description}</p>
           <div>
             <b>Author(s): {book.authors} </b><br />
