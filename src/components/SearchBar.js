@@ -8,18 +8,19 @@ export default class SearchBar extends Component {
       this.props.searchBooks(evt.target.value)
     }
   }
-  
+    
   render() {
     return(
-      <div className="search-books-bar">
-        <Link to='/' className='close-search'>Close</Link>
-        <div className="search-books-input-wrapper">
+      <div className="navbar-form navbar-left" role="search">
+        <div className="form-group search-books-bar">
+          <Link to='/' className='close-search'>Close</Link>
           <input
             type="text"
             placeholder="Search by title or author"
             onKeyPress={this.handleKeyPress}
           />
         </div>
-      </div>)
+      </div>
+    )
   }
 }

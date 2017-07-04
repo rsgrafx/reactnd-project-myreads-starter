@@ -1,8 +1,10 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import * as BooksAPI from '../BooksAPI'
+import React, {Component} from "react"
+import {Link} from "react-router-dom"
+import * as BooksAPI from "../BooksAPI"
 
-import BookControl from './BookControl'
+import BookControl from "./BookControl"
+import Nav from "./Nav"
+import SearchLink from "./SearchLink"
 
 export default class BookDisplay extends Component {
   
@@ -21,16 +23,13 @@ export default class BookDisplay extends Component {
   }
   
   render() {
+    const search = <SearchLink />
     const {book} = this.state
     const {addToShelf} = this.props
+    
     return(
       <div>
-        <div className="list-books-title">
-          <h1>Orion's List</h1>
-        </div>
-        <div className="nav-bar">
-          <Link to="/search">Search More Books</Link>
-        </div>
+        <Nav navLink={search} />
         <div className="bookshelf">
           <h3>Book Title: {book.title} </h3>
           <div id="book-display">Current shelf: {book.shelf}

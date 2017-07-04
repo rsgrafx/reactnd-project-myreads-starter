@@ -64,7 +64,7 @@ body, .app {
 
 /* search page */
 
-.search-books-bar {
+.old.search-books-bar {
   position: fixed;
   width: 100%;
   top: 0;
@@ -73,16 +73,32 @@ body, .app {
   display: flex;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
 }
-.search-books-input-wrapper {
+.old.search-books-input-wrapper {
   flex: 1;
   background: #e9e;
 }
-.search-books-bar input {
+.old.search-books-bar input {
   width: 100%;
   padding: 15px 10px;
   font-size: 1.25em;
   border: none;
   outline: none;
+}
+
+.form-group.search-books-bar {
+  display: flex;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+}
+.form-group.search-books-input-wrapper {
+  width: 100%;
+  background: #e9e;
+}
+
+.form-group.search-books-bar input {
+  font-size: 1.25em;
+  border: none;
+  outline: none;
+  width: 80%;
 }
 
 .close-search {

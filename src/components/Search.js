@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import * as BooksAPI from '../BooksAPI'
-import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import SearchResults from './SearchResults'
+import Nav from './Nav'
 
 export default class Search extends Component {
   
@@ -32,21 +32,17 @@ export default class Search extends Component {
   }
   
   render() {
+    const search = <SearchBar searchBooks={this.searchBooks} />
     const {handleShelfChange} = this.props
 
     return(
-      <div className="search-books">
-        <SearchBar
-          searchBooks={this.searchBooks}
-        />
+      <div className="">
+        <Nav navLink={search} searchBooks={this.searchBooks}/>
         <SearchResults
           results={this.state.books}
           message={this.state.message}
           handleShelfChange={handleShelfChange}
         />
-        <div className="nav-bar">
-          <Link to="/">My bookshelf</Link>
-        </div>
       </div>
     )
   }
