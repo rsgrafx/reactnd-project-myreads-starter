@@ -15,7 +15,10 @@ export default class BookShelf extends Component {
     return(
       <div className="list-books">
         <div className="list-books-title">
-          <h1>Orion's Reads</h1>
+          <h1>Orion's List</h1>
+        </div>
+        <div className="nav-bar">
+          <Link to="/search">Search More Books</Link>
         </div>
         <div className="list-books-content">
           <div>
