@@ -1,36 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-class BookControl extends Component {
-  
-  state = {
-    book: this.props.book
-  }
-  
-  changeShelf = (event) => {
-    this.props.handleShelfChange(this.state.book, event.target.value)
-  }
-
-  render() {
-    const {shelf} = this.props
-    return(
-      <div className="book-shelf-changer">
-        <select value={this.state.value} onChange={this.changeShelf} defaultValue={shelf || "none"}>
-          <option value="none" disabled>Move to...</option>
-          <option value="currentlyReading">Currently Reading</option>
-          <option value="wantToRead">Want to Read</option>
-          <option value="read">Read</option>
-          <option value="none">None</option>
-        </select>
-      </div>)
-  }
-}
+import BookControl from './BookControl'
 
 const BookCover = ({book, image}) => {
-  return(<div
-      className="book-cover"
-        style={{ width: 128, height: 193, backgroundImage: `url(${image})` }}>
-      </div>)
+  return(
+      <Link to={`/book/${book.id}`}>
+        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${image})` }}>
+        </div>
+      </Link>)
 }
 
 export default class Book extends Component {
@@ -41,7 +20,7 @@ export default class Book extends Component {
   }
   
   render() {
-    let { book, imageLink, handleShelfChange } = this.props
+    let { book, imageLink, handleShelfChange, search } = this.props
     return(
       <div className="book">
         <div className="book-top">
@@ -51,8 +30,7 @@ export default class Book extends Component {
           <BookControl
             handleShelfChange={handleShelfChange}
             book={book}
-            shelf={book.shelf}
-          />
+            shelf={book.shelf} />
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{!!(book.authors) && book.authors.join(", ")}</div>

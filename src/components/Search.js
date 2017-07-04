@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import * as BooksAPI from '../BooksAPI'
+import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import SearchResults from './SearchResults'
 
@@ -44,6 +45,9 @@ export default class Search extends Component {
           message={this.state.message}
           handleShelfChange={handleShelfChange}
         />
+        <div className="nav-bar">
+          <Link to="/">My bookshelf</Link>
+        </div>
       </div>
     )
   }
