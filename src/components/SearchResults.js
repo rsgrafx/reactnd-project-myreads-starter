@@ -15,7 +15,7 @@ export default class SearchResults extends Component {
 
     return(
       <div className="search-books-results">
-        <h3> {message} </h3>
+        <h3>{message}</h3>
         <ol className="books-grid">
             {(results.length !== 0) && results.map((book, idx) => (
               <li key={`${book.id}-${idx}`}>

@@ -45,7 +45,9 @@ export default class Book extends Component {
     return(
       <div className="book">
         <div className="book-top">
-          <BookCover book={book} image={imageLink} />
+          <BookCover
+            book={book}
+            image={imageLink} />
           <BookControl
             handleShelfChange={handleShelfChange}
             book={book}
