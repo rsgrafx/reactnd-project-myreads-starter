@@ -1,11 +1,29 @@
 import React, {Component} from 'react'
 import * as BooksAPI from './BooksAPI'
-import {Route} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 
 import BookShelf from './components/BookShelf'
 import Search from './components/Search'
+import BookDisplay from './components/BookDisplay'
 
 import './App.css'
+
+
+const NoMatch = ({ location }) => (
+  (location.pathname !== '/search') && (
+    <div>
+      <div className="list-books-title">
+        <h1>Orion's List</h1>
+      </div>
+      <div className="nav-bar">
+        <Link to="/search">Search More Books</Link>
+      </div>
+      <div>
+        <h3>Sorry, the page your looking for is not available.</h3>
+      </div>
+    </div>
+  )
+)
 
 class BooksApp extends Component {
   state = {
@@ -49,14 +67,13 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-        <Route exact path="/search" render={ () => <Search
-          handleShelfChange={this.addToShelf} />
-        }
-        />
+        <Route exact path="/search" render={ () => <Search handleShelfChange={this.addToShelf} /> } />
         <Route exact path="/" render={() => <BookShelf
             handleShelfChange={this.handleShelfChange}
             books={this.state.allBooks}
           />} />
+        <Route exact path="/book/:id" render={(match) => <BookDisplay addToShelf={this.addToShelf} router={match} /> } />
+        <Route exact path="/:anything" component={NoMatch} />
       </div>
       )
    }
