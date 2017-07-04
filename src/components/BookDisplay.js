@@ -18,7 +18,7 @@ export default class BookDisplay extends Component {
   }
   
   render() {
-    const {book, shelf} = this.state
+    const {book} = this.state
     const {addToShelf} = this.props
     return(
       <div>
@@ -36,7 +36,7 @@ export default class BookDisplay extends Component {
                 onDisplay={true}
                 handleShelfChange={addToShelf}
                 book={book}
-                shelf={shelf} />
+                shelf={book.shelf} />
             </div>
           </div>
           
