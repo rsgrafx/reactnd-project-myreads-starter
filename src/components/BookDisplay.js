@@ -7,17 +7,18 @@ import BookControl from './BookControl'
 export default class BookDisplay extends Component {
   
   state = {
-    book: {}
+    book: {},
   }
   
   componentDidMount() {
     const {match} = this.props.router
+    
     BooksAPI.get(match.params.id)
       .then(book => this.setState({book: book}))
   }
   
   render() {
-    const {book} = this.state
+    const {book, shelf} = this.state
     const {addToShelf} = this.props
     return(
       <div>
@@ -32,9 +33,10 @@ export default class BookDisplay extends Component {
           <div id="book-display">Current shelf: {book.shelf}
             <div>
               <BookControl
+                onDisplay={true}
                 handleShelfChange={addToShelf}
                 book={book}
-                shelf={book.shelf} />
+                shelf={shelf} />
             </div>
           </div>
           

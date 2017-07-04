@@ -37,7 +37,6 @@ export default class Search extends Component {
     return(
       <div className="search-books">
         <SearchBar
-          handleShelfChange={handleShelfChange}
           searchBooks={this.searchBooks}
         />
         <SearchResults

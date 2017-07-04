@@ -20,6 +20,7 @@ export default class SearchResults extends Component {
             {(results.length !== 0) && results.map((book, idx) => (
               <li key={`${book.id}-${idx}`}>
                 <Book
+                  searchPage={true}
                   book={book}
                   imageLink={book.imageLinks.smallThumbnail}
                   handleShelfChange={handleShelfChange} />

@@ -7,7 +7,8 @@ export default class BookControl extends Component {
   }
   
   changeShelf = (event) => {
-    this.props.handleShelfChange(this.state.book, event.target.value)
+    let book = (this.props.onDisplay) ? this.props.book : this.state.book
+    this.props.handleShelfChange(book, event.target.value)
   }
 
   render() {

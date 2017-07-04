@@ -41,9 +41,11 @@ class BooksApp extends Component {
   
   addToShelf = (book, shelf) => {
     book.shelf = shelf
-    let results = this.state.allBooks.concat(book)
+    let bookId = book.id
+    let results = this.state.allBooks.filter((book) => (book.id !== bookId))
+    let new_results = results.concat(book)
     this._updateBookApi(book, shelf)
-    this.setState({allBooks: results})
+    this.setState({allBooks: new_results})
   }
   
   _updateBooks = (target_book) => {
@@ -72,7 +74,10 @@ class BooksApp extends Component {
             handleShelfChange={this.handleShelfChange}
             books={this.state.allBooks}
           />} />
-        <Route exact path="/book/:id" render={(match) => <BookDisplay addToShelf={this.addToShelf} router={match} /> } />
+        <Route exact path="/book/:id" render={(router) => <BookDisplay
+            addToShelf={this.addToShelf}
+            router={router}
+          /> } />
         <Route exact path="/:anything" component={NoMatch} />
       </div>
       )

@@ -20,7 +20,7 @@ export default class Book extends Component {
   }
   
   render() {
-    let { book, imageLink, handleShelfChange, search } = this.props
+    let { book, imageLink, handleShelfChange } = this.props
     return(
       <div className="book">
         <div className="book-top">
