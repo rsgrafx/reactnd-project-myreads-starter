@@ -5,6 +5,7 @@ import * as BooksAPI from "../BooksAPI"
 import BookControl from "./BookControl"
 import Nav from "./Nav"
 import SearchLink from "./SearchLink"
+import Review from './Review'
 
 export default class BookDisplay extends Component {
   
@@ -30,7 +31,7 @@ export default class BookDisplay extends Component {
     return(
       <div>
         <Nav navLink={search} />
-        <div className="bookshelf">
+        <div className="bookshelf container">
           <h3>Book Title: {book.title} </h3>
           <div id="book-display">Current shelf: {book.shelf}
             <div>
@@ -51,6 +52,7 @@ export default class BookDisplay extends Component {
             <small> Publisher: {book.publisher} </small>
           </div>
         </div>
+        <Review book={book} />
         <div className="nav-bar">
           <Link to="/">My BookShelf</Link>
         </div>
