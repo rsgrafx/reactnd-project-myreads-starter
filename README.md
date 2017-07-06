@@ -1,6 +1,6 @@
 ## React.js Udacity Class - Term 1. My Reads
 
-##### See [demo app here](https://orionreads.herokuapp.com)
+##### See [demo app here](https://orionsreads.herokuapp.com)
 
 This application gives you the ability to search and track books. There are three categories you can place books you find in. You can rearrange these books in these categories.
 
