@@ -1,7 +1,8 @@
 import React, {Component} from "react"
 import {Link} from "react-router-dom"
-import * as BooksAPI from "../BooksAPI"
+import firebase from '../firebase'
 
+import * as BooksAPI from "../BooksAPI"
 import BookControl from "./BookControl"
 import Nav from "./Nav"
 import SearchLink from "./SearchLink"
@@ -13,7 +14,8 @@ export default class BookDisplay extends Component {
     super(props)
     this.state = {
       book: {},
-      url: ''
+      url: '',
+      reviews: []
     }
   }
   
@@ -21,6 +23,28 @@ export default class BookDisplay extends Component {
     const {match} = this.props.router
     BooksAPI.get(match.params.id)
       .then(book => this.setState({book: book, url: book.imageLinks.thumbnail}))
+    this.returnReviewFor(match.params.id)
+  }
+  
+  returnReviewFor(bookID) {
+    const reviewRef = firebase.database().ref('reviews')
+    
+    reviewRef.on('value', (snapshot) => {
+      let items = snapshot.val();
+      let newState = [];
+      for (let item in items) {
+        newState.push({
+          id: item,
+          bookID: items[item].bookID,
+          username: items[item].username,
+          review: items[item].review
+        });
+      }
+      let reviews = newState.filter(review => (review.bookID === bookID))
+      this.setState({
+        reviews: reviews
+      });
+    });
   }
   
   render() {
@@ -52,7 +76,7 @@ export default class BookDisplay extends Component {
             <small> Publisher: {book.publisher} </small>
           </div>
         </div>
-        <Review book={book} />
+        <Review book={book} filterFunc={this.returnReviewFor} reviews={this.state.reviews}/>
         <div className="nav-bar">
           <Link to="/">My BookShelf</Link>
         </div>

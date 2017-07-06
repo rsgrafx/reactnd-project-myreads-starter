@@ -8,8 +8,6 @@ export default class Review extends Component {
   
   constructor() {
     super()
-  
-    // let token = localStorage.token
     this.state = {
       reviewDetail: "",
       username: localStorage.username || "",
@@ -38,28 +36,7 @@ export default class Review extends Component {
       userID: this.state.userID
     }
     reviewRef.push(review);
-    
     this.setState({reviewDetail: ''})
-  }
-  
-  componentWillMount() {
-    console.log(this.props)
-    const reviewRef = firebase.database().ref('reviews')
-    
-    reviewRef.on('value', (snapshot) => {
-      let items = snapshot.val();
-      let newState = [];
-      for (let item in items) {
-        newState.push({
-          id: item,
-          username: items[item].username,
-          review: items[item].review
-        });
-      }
-      this.setState({
-        reviews: newState
-      });
-    });
   }
   
   render() {
@@ -95,7 +72,7 @@ export default class Review extends Component {
                   </form>
               </section>
             </div>
-            <ReviewList reviews={this.state.reviews} book={this.props.book} />
+            <ReviewList reviews={this.props.reviews} book={this.props.book} />
           </div>
           )
         }
