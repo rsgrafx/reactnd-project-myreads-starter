@@ -3,6 +3,8 @@ import React from 'react'
 const ReviewList = ({reviews}) => {
   return(
     <div className="container">
+      <h3>{reviews.length} Reviews found</h3>
+      <hr />
       <div className="list-group col-md-12">
         <ul>
           {reviews.map((rev) => (<li key={rev.id} className="list-group-item">
