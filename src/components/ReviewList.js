@@ -11,7 +11,8 @@ const ReviewList = ({reviews}) => {
            </li>))}
         </ul>
       </div>
-    </div>)
+    </div>
+  )
 }
 
 export default ReviewList;

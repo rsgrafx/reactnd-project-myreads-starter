@@ -39,6 +39,7 @@ export default class BookShelf extends Component {
           <Link to="/search">Add a book</Link>
         </div>
       </div>
-    </div>)
+    </div>
+    )
   }
 }

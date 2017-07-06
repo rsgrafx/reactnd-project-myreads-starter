@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import {Link} from "react-router-dom"
-import firebase from '../firebase'
 
+import firebase from '../firebase'
 import * as BooksAPI from "../BooksAPI"
 import BookControl from "./BookControl"
 import Nav from "./Nav"
@@ -76,10 +76,12 @@ export default class BookDisplay extends Component {
             <small> Publisher: {book.publisher} </small>
           </div>
         </div>
-        <Review book={book} filterFunc={this.returnReviewFor} reviews={this.state.reviews}/>
+        <Review book={book}
+          reviews={this.state.reviews}/>
         <div className="nav-bar">
           <Link to="/">My BookShelf</Link>
         </div>
-      </div>)
+      </div>
+    )
   }
 }

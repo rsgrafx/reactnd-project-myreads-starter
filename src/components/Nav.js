@@ -15,7 +15,8 @@ const Nav = (props) => {
           </li>
         </ul>
       </div>
-    </div>)
+    </div>
+   )
 }
 
 export default Nav;

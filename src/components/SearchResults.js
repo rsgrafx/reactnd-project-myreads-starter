@@ -17,14 +17,14 @@ export default class SearchResults extends Component {
       <div className="search-books-results">
         <h3>{message}</h3>
         <ol className="books-grid">
-            {(results.length !== 0) && results.map((book, idx) => (
-              <li key={`${book.id}-${idx}`}>
-                <Book
-                  searchPage={true}
-                  book={book}
-                  imageLink={book.imageLinks.smallThumbnail}
-                  handleShelfChange={handleShelfChange} />
-              </li>))}
+          {(results.length !== 0) && results.map((book, idx) => (
+            <li key={`${book.id}-${idx}`}>
+              <Book
+                searchPage={true}
+                book={book}
+                imageLink={book.imageLinks.smallThumbnail}
+                handleShelfChange={handleShelfChange} />
+            </li>))}
         </ol>
       </div>
     )

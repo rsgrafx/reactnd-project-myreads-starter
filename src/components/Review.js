@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import serializeForm from 'form-serialize';
-import firebase from '../firebase'
 
+import firebase from '../firebase'
 import ReviewList from './ReviewList'
 
 export default class Review extends Component {
@@ -74,6 +74,6 @@ export default class Review extends Component {
             </div>
             <ReviewList reviews={this.props.reviews} book={this.props.book} />
           </div>
-          )
-        }
+        )
+    }
 }

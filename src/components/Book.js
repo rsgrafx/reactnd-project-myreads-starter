@@ -9,7 +9,8 @@ const BookCover = ({book, image}) => {
       <Link to={`/book/${book.id}`}>
         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${image})` }}>
         </div>
-      </Link>)
+      </Link>
+    )
 }
 
 export default class Book extends Component {
