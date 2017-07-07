@@ -3,21 +3,18 @@ import {Link} from 'react-router-dom'
 
 import Shelf from './Shelf'
 import Nav from './Nav'
-import SearchLink from './SearchLink'
 
 export default class BookShelf extends Component {
   
   render() {
     const {books, handleShelfChange} = this.props
-    const search = <SearchLink />
-    
     let read = books.filter((book) => (book.shelf === "read"))
     let currentlyReading = books.filter((book) => (book.shelf === "currentlyReading"))
     let wantToRead = books.filter((book) => (book.shelf === "wantToRead"))
     
     return(
       <div>
-        <Nav navLink={search} />
+        <Nav navLink={this.props.navLink} />
         <div className="list-books">
           <div className="list-books-content">
             <div>

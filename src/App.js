@@ -5,6 +5,8 @@ import {Route, Link} from 'react-router-dom'
 import BookShelf from './components/BookShelf'
 import Search from './components/Search'
 import BookDisplay from './components/BookDisplay'
+import SearchLink from './components/SearchLink'
+
 
 import './App.css'
 
@@ -73,6 +75,7 @@ class BooksApp extends Component {
         <Route exact path="/" render={() => <BookShelf
             handleShelfChange={this.handleShelfChange}
             books={this.state.allBooks}
+            navLink={<SearchLink />}
           />} />
         <Route exact path="/book/:id" render={(router) => <BookDisplay
             addToShelf={this.addToShelf}
