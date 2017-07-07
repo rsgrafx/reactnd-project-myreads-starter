@@ -6,25 +6,23 @@ import ReviewList from './ReviewList'
 
 export default class Review extends Component {
   
+  state = {
+    reviewDetail: "",
+    username: localStorage.username || "",
+    bookID: "",
+    userID: localStorage.token,
+    reviews: []
+  }
+  
   constructor() {
     super()
-    this.state = {
-      reviewDetail: "",
-      username: localStorage.username || "",
-      bookID: "",
-      userID: localStorage.token,
-      reviews: []
-    }
-  
+    
     this.handleReview = this.handleReview.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleReview(e) {
-    this.setState({[e.target.name]: e.target.value})
-  }
-  
-  handleSubmit(e) {
+  handleReview = (e) => (this.setState({[e.target.name]: e.target.value}))
+  handleSubmit = (e) => {
     e.preventDefault()
     const reviewRef = firebase.database().ref("reviews")
     const values = serializeForm(e.target, {hash: true})
